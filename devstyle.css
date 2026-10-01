@@ -1,0 +1,197 @@
+/* ==========================================================================
+   1. Colour & Type System (CSS Variables)
+   ========================================================================== */
+:root {
+  --brand: #2563eb;          /* Primary Accent / Links */
+  --brand-hover: #1d4ed8;    /* Hover State Accent */
+  --bg-color: #7af0f4;       /* Main Page Background */
+  --card-bg: #7dcae6;        /* Card Background */
+  --ink: #0f172a;            /* Primary Text Color */
+  --ink-muted: #475569;      /* Secondary/Muted Text Color */
+  --border-color: #e2e8f0;   /* Border Color */
+  
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* Base Styles & Universal Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 0;
+}
+
+/* Flexible Images Rule (Prevents images from overflowing on small screens) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Links */
+a {
+  color: var(--brand);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   2. Header & Navigation (Flexbox Layout)
+   ========================================================================== */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--card-bg);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  font-size: 1.75rem;
+  color: var(--ink);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+nav a:hover {
+  color: var(--brand);
+}
+
+/* ==========================================================================
+   3. Main Content Sections
+   ========================================================================== */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+  border-bottom: 2px solid var(--brand);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+#about p {
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   4. Projects Section (CSS Grid Layout)
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default 1-column layout for mobile */
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+/* Card Hover State */
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.project-card p {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-card a {
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* ==========================================================================
+   5. Footer / Contact Section
+   ========================================================================== */
+footer {
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer p {
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+footer a {
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   6. Responsive Breakpoint (Media Query)
+   ========================================================================== */
+@media (min-width: 640px) {
+  /* Desktop/Tablet Header Alignment */
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Expand Projects Grid to 2 Columns on Larger Screens */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
